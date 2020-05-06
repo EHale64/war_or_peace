@@ -25,4 +25,9 @@ class DeckTest < Minitest::Test
     assert_equal 3, @deck.rank_of_card_at(1)
     assert_equal 14, @deck.rank_of_card_at(2)
   end
+
+  def test_it_can_find_high_ranking_cards
+    expected = [@card1, @card3]
+    assert_equal expected, @deck.high_ranking_cards
+  end
 end
