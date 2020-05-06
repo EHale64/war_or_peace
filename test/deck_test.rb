@@ -30,4 +30,8 @@ class DeckTest < Minitest::Test
     expected = [@card1, @card3]
     assert_equal expected, @deck.high_ranking_cards
   end
+
+  def test_it_can_return_percent_high_ranking
+    assert_equal 66.67, @deck.percent_high_ranking
+  end
 end
