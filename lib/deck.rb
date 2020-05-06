@@ -5,5 +5,7 @@ class Deck
     @cards = cards
   end
 
-  #require 'pry'; binding.pry
+  def rank_of_card_at(index)
+    @cards[index].rank
+  end
 end
