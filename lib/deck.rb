@@ -1,3 +1,4 @@
+require 'pry';
 class Deck
   attr_reader :cards
 
@@ -8,4 +9,8 @@ class Deck
   def rank_of_card_at(index)
     @cards[index].rank
   end
-end
+
+  def high_ranking_cards
+    @cards.find_all { |card| card.rank > 10 }
+  end
+ end
