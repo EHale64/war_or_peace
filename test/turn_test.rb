@@ -31,4 +31,8 @@ class PlayerTest < Minitest::Test
     assert_equal @player2 , @turn.player2
     assert_equal [], @turn.spoils_of_war
   end
+
+  def test_it_has_types
+    assert @turn.type
+  end
 end
