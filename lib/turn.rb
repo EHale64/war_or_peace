@@ -30,6 +30,8 @@ class Turn
       elsif player1.deck.rank_of_card_at(2) < player2.deck.rank_of_card_at(2)
         player2
       end
+    else
+      "No Winner"
     end
   end
 end

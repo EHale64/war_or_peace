@@ -81,6 +81,6 @@ class PlayerTest < Minitest::Test
     turn3 = Turn.new(player3, player4)
     assert_equal @player1, @turn.winner
     assert_equal player2, turn2.winner
-    #assert_equal @player1, @turn.winner
+    assert_equal "No Winner", turn3.winner
   end
 end
