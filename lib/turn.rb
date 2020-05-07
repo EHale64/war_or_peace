@@ -15,6 +15,15 @@ class Turn
     elsif player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0)
       :war
     end
-    #require 'pry'; binding.pry
+  end
+
+  def winner
+    if type == :basic
+      if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
+        player1
+      elsif player1.deck.rank_of_card_at(0) < player2.deck.rank_of_card_at(0)
+        player2
+      end
+    end
   end
 end

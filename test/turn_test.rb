@@ -59,4 +59,8 @@ class PlayerTest < Minitest::Test
     assert_equal :war, turn2.type
     assert_equal :mutually_assured_destruction, turn3.type
   end
+
+  def test_it_can_find_winner
+    assert_equal @player1, @turn.winner
+  end
 end
