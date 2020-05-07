@@ -35,4 +35,14 @@ class PlayerTest < Minitest::Test
   def test_it_has_types
     assert @turn.type
   end
+
+  def test_it_has_three_types
+    deck1 = Deck.new([@card1, @card2, @card5, @card8])
+    deck2 = Deck.new([@card4, @card3, @card6, @card7])
+    @player1 = Player.new("Megan", deck1)
+    @player2 = Player.new("Aurora", deck2)
+    turn2 = Turn.new(@player1, @player2)
+    assert_equal :basic, @turn.type
+    assert_equal :war, turn2.type
+  end
 end
