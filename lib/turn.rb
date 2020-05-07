@@ -30,8 +30,19 @@ class Turn
       elsif player1.deck.rank_of_card_at(2) < player2.deck.rank_of_card_at(2)
         player2
       end
-    else
+    elsif type == :mutually_assured_destruction
       "No Winner"
+    end
+  end
+
+  def pile_cards
+    if type == :basic
+      players = [@player1, @player2]
+      pile = []
+      players.each do |player|
+        pile << player.deck.cards.first
+      end
+      pile
     end
   end
 end
