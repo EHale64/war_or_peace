@@ -36,13 +36,20 @@ class Turn
   end
 
   def pile_cards
+    players = [@player1, @player2]
     if type == :basic
-      players = [@player1, @player2]
-      pile = []
+    pile = []
       players.each do |player|
         pile << player.deck.cards.first
       end
       pile
+    elsif type == :war
+    pile = []
+      players.each do |player|
+        pile << player.deck.cards[0..2]
+        #require 'pry'; binding.pry
+      end
+      pile.flatten
     end
   end
 end
