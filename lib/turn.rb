@@ -43,7 +43,7 @@ class Turn
         pile << player.deck.cards.first
       end
       pile
-    elsif type == :war
+    elsif type == :war || type == :mutually_assured_destruction
     pile = []
       players.each do |player|
         pile << player.deck.cards[0..2]
