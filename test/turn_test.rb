@@ -133,6 +133,8 @@ class PlayerTest < Minitest::Test
     turn3 = Turn.new(player3, player4)
     @turn.pile_cards
     @turn.award_spoils
-    assert_equal [@card2, @card5, @card8, @card1, @card3,],  @turn.player1.deck
+    binding.pry
+    assert_equal [@card2, @card5, @card8, @card1, @card3],  @turn.player1.deck.cards
+    assert_equal [@card4, @card6, @card7],  @turn.player2.deck.cards
   end
 end

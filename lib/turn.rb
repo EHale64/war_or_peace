@@ -40,7 +40,7 @@ class Turn
     players = [@player1, @player2]
     if type == :basic
       players.each do |player|
-        @spoils_of_war << player.deck.cards.first
+        @spoils_of_war << player.deck.remove_card
       end
     elsif type == :war
       players.each do |player|
@@ -50,6 +50,10 @@ class Turn
   end
 
   def award_spoils
-    require 'pry'; binding.pry
+    if type == :basic || type == :war
+      @spoils_of_war.each do |spoils|
+        winner.deck.cards << spoils
+      end
+    end
   end
 end
