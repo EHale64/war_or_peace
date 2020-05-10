@@ -4,6 +4,7 @@ require './lib/card'
 require './lib/deck'
 require './lib/player'
 require './lib/turn.rb'
+require 'pry';
 
 class PlayerTest < Minitest::Test
   def setup
@@ -103,8 +104,11 @@ class PlayerTest < Minitest::Test
     player4 = Player.new("Aurora", deck4)
     turn2 = Turn.new(player1, player2)
     turn3 = Turn.new(player3, player4)
-    assert_equal [@card1, @card3], @turn.pile_cards
-    assert_equal [@card1, @card2, @card5, @card4, @card3, @card6], turn2.pile_cards
-    assert_equal [card1, card2, card5, card4, card3, card6], turn3.pile_cards
+    @turn.pile_cards
+    assert_equal [@card1, @card3], @turn.spoils_of_war
+    turn2.pile_cards
+    assert_equal [@card1, @card2, @card5, @card4, @card3, @card6], turn2.spoils_of_war
+    turn3.pile_cards
+    assert_equal [], turn3.spoils_of_war
   end
 end

@@ -18,6 +18,7 @@ class Turn
   end
 
   def winner
+    players = [@player1, @player2]
     if type == :basic
       if player1.deck.rank_of_card_at(0) > player2.deck.rank_of_card_at(0)
         player1
@@ -38,18 +39,13 @@ class Turn
   def pile_cards
     players = [@player1, @player2]
     if type == :basic
-    pile = []
       players.each do |player|
-        pile << player.deck.cards.first
+        @spoils_of_war << player.deck.cards.first
       end
-      pile
-    elsif type == :war || type == :mutually_assured_destruction
-    pile = []
+    elsif type == :war
       players.each do |player|
-        pile << player.deck.cards[0..2]
-        #require 'pry'; binding.pry
+        @spoils_of_war.concat(player.deck.cards[0..2])
       end
-      pile.flatten
     end
   end
 end
