@@ -48,4 +48,8 @@ class Turn
       end
     end
   end
+
+  def award_spoils
+    require 'pry'; binding.pry
+  end
 end
