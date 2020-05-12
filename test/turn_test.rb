@@ -131,10 +131,21 @@ class PlayerTest < Minitest::Test
     player4 = Player.new("Aurora", deck4)
     turn2 = Turn.new(player1, player2)
     turn3 = Turn.new(player3, player4)
+    winner = @turn.winner
     @turn.pile_cards
-    @turn.award_spoils
-    binding.pry
+    @turn.award_spoils(winner)
+    winner2 = turn2.winner
+    turn2.pile_cards
+    turn2.award_spoils(winner2)
+    winner3 = turn3.winner
+    turn3.pile_cards
+    turn3.award_spoils(winner3)
     assert_equal [@card2, @card5, @card8, @card1, @card3],  @turn.player1.deck.cards
     assert_equal [@card4, @card6, @card7],  @turn.player2.deck.cards
+    assert_equal [@card8], turn2.player1.deck.cards
+    assert_equal [@card7, @card1, @card2, @card5, @card4, @card3, @card6],  turn2.player2.deck.cards
+    assert_equal [card8],  turn3.player1.deck.cards
+    assert_equal [card7],  turn3.player2.deck.cards
+    assert_equal [], turn3.spoils_of_war
   end
 end

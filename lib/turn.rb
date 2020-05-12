@@ -44,13 +44,21 @@ class Turn
       end
     elsif type == :war
       players.each do |player|
-        @spoils_of_war.concat(player.deck.cards[0..2])
+        3.times do
+          @spoils_of_war << player.deck.remove_card
+        end
+      end
+    else
+      players.each do |player|
+        3.times do
+          player.deck.remove_card
+        end
       end
     end
   end
 
-  def award_spoils
-    if type == :basic || type == :war
+  def award_spoils(winner)
+    if type != :mutually_assured_destruction
       @spoils_of_war.each do |spoils|
         winner.deck.cards << spoils
       end
